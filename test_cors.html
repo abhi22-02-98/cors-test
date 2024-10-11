@@ -1,0 +1,25 @@
+<html>
+   <head>
+        <meta charset="UTF-8"/>
+        <title>Salesforce logout</title>
+        <script>
+            function doLogout() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+               if (this.readyState == 4 && this.status == 200) {
+                   console.log("Respuesta: "+this.responseText.trim()); 
+               }else if (this.readyState == 4){
+                  console.log('logout '+this.responseText.trim()+ ' readyState '+this.readyState+' status '+this.status);
+                  }
+            };
+                console.log('------> session se envia logout');
+                xhttp.withCredentials=true;
+                xhttp.open("POST", "https://apimpale-240203-962-demo.my.site.com/secur/logout.jsp", true);
+                xhttp.send();
+              }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="Logout JS" onclick="doLogout();"/><br/>
+    </body>
+</html>
